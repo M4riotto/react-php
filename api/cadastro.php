@@ -1,12 +1,7 @@
 <?php
 
 require ('config/cors.php'); 
-// Habilitar CORS para somente undertakehigh.com.br/teste
-//header("Access-Control-Allow-Origin: https://undertakehigh.com.br/teste");
-//header("Access-Control-Allow-Methods: POST, OPTIONS");
-//header("Access-Control-Allow-Headers: Content-Type");
-//header("Access-Control-Max-Age: 86400"); // Tempo de cache para opções pré-voo (em segundos)
-
+require ('database.php'); 
 
 // Verificar se a requisição é OPTIONS e retornar apenas os cabeçalhos CORS
 if ($_SERVER["REQUEST_METHOD"] === "OPTIONS") {
@@ -16,18 +11,50 @@ if ($_SERVER["REQUEST_METHOD"] === "OPTIONS") {
 
 $response_json = file_get_contents("php://input");
 $dados = json_decode($response_json, true);
-if (isset($dados["nome"]) && isset($dados["email"])) {
-  // Obtém os dados enviados pelo React
-  $nome = $dados["nome"];
-  $email = $dados["email"];
+if ($dados){
+
+    $nome = $dados["nome"];
+    $sobrenome = $dados["sobrenome"];
+    $email = $dados["email"]; 
+    $cpf = $dados["cpf"]; 
+    $empresa = $dados["empresa"]; //name do input
+    $telefone = $dados["telefone"];   
+    $senha = $dados["senha"];   
+    $senhaHash = password_hash($senha, PASSWORD_DEFAULT);
 
   // Aqui você pode realizar ações adicionais, como salvar no banco de dados, enviar e-mails, etc.
+  try {
+    $stmt = $connect->prepare("INSERT INTO criadores (nome, sobrenome, email, cpf, empresa, telefone, senha_usuario) VALUES (:nome, :sobrenome, :email, :cpf, :empresa,  :telefone, :senha_usuario)");
 
-  // Retorna uma resposta simples em formato JSON
-  $result = array("mensagem" => "Cadastro realizado com sucesso!");
+    $stmt->bindParam(':nome', $nome);
+    $stmt->bindParam(':sobrenome', $sobrenome);
+    $stmt->bindParam(':email', $email);
+    $stmt->bindParam(':cpf', $cpf);
+    $stmt->bindParam(':empresa', $empresa);
+    $stmt->bindParam(':telefone', $telefone);
+    $stmt->bindParam(':senha_usuario', $senhaHash);
 
-  header('Content-Type: application/json'); // para ser enviado no formato json.
-  echo json_encode($result); // exibir o resultado.
+    $stmt->execute();
+    // echo "Cadastro com sucesso!";
+    $id = $connect->lastInsertId();
+
+    $result["success"]["message"] = "Cadastrado com sucesso!"; //criamos o array para devolver o resultado do insert numa mensagem de sucesso.
+
+    $result["data"]["id"] = $id; //criamos o array para devolver o resultado do insert com os dados inseridos.
+    $result["data"]["nome"] = $nome;
+    $result["data"]["sobrenome"] = $sobrenome;
+    $result["data"]["email"] = $email;
+    $result["data"]["cpf"] = $cpf;
+    $result["data"]["empresa"] = $empresa;
+    $result["data"]["telefone"] = $telefone;
+    $result["data"]["senha"] = $senhaHash;
+
+    header('Content-Type: application/json'); // para ser enviado no formato json.
+    echo json_encode($result); // exibir o resultado.
+  }
+  catch (PDOException $erro) {
+    echo "connect failed: " . $erro->getMessage();
+}
 } else {
   http_response_code(400); // Código HTTP 400 - Requisição inválida
   $response = array("mensagem" => "Dados inválidos na requisição");
