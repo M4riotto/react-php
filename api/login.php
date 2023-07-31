@@ -31,17 +31,15 @@ if ($data) {
 
             if(password_verify($password, $result[0]['senha_usuario'])){
                 // header("Location: Eventos_Cadastrados.php");
-                echo 'okay';
             } else{
                 exit;
             }
             // Se encontrou um usuário, retorna os detalhes do usuário
             $response = [
-                'message' => 'Usuário Logado!',
+                'token' => password_hash($result[0]['id'], PASSWORD_DEFAULT),
+                'message' => 'Usuario Logado!',
                 'user' => [
                     'nome' => $result[0]['nome'],
-                    'cpf' => $result[0]['cpf'],
-                    'senha' => $result[0]['senha_usuario'],
                     'sobrenome' => $result[0]['sobrenome']
                 ]
             ];
