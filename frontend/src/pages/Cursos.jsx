@@ -21,7 +21,7 @@ function Cursos() {
 
   const handleCadastro = () => {
     axios
-      .post('http://localhost/projeto_curso/api/cadastro.php', formData)
+      .post('http://localhost/projeto_curso/api/cadastroCurso.php', formData)
       .then((result) => {
         console.log('Cadastro realizado com sucesso!', result.data);
         setMensagem(`Cadastro realizado com sucesso! Título: ${formData.titulo}`);

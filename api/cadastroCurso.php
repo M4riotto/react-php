@@ -1,7 +1,7 @@
 <?php
 
 require('config/cors.php');
-require('database.php');
+require('../database/database.php');
 
 // Verificar se a requisição é OPTIONS e retornar apenas os cabeçalhos CORS
 if ($_SERVER["REQUEST_METHOD"] === "OPTIONS") {
