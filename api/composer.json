@@ -1,0 +1,11 @@
+{
+    "name": "vitor/api",
+    "autoload": {
+        "psr-4": {
+            "Vitor\\Api\\": "src/"
+        }
+    },
+    "require": {
+        "tuupola/cors-middleware": "^1.4"
+    }
+}
