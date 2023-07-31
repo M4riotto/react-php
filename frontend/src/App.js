@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { TextField, Button, Container, Typography, Box, Grid } from '@mui/material';
 
 function App() {
   const [formData, setFormData] = useState({
@@ -23,60 +24,112 @@ function App() {
   };
 
   const handleCadastro = () => {
-    axios.post('http://localhost/projeto_curso/api/cadastro.php', formData)
-      .then(result => {
+    axios
+      .post('http://localhost/projeto_curso/api/cadastro.php', formData)
+      .then((result) => {
         console.log('Cadastro realizado com sucesso!', result.data);
         setMensagem(`Cadastro realizado com sucesso! ${formData.nome}`);
       })
-      .catch(error => {
+      .catch((error) => {
         console.error('Erro ao realizar o cadastro:', error);
         setMensagem('Erro ao realizar o cadastro.');
       });
   };
 
   return (
-    <div>
-      <h1>Exemplo de Formulário e Requisição com React</h1>
-      <form>
-        <label>
-          Nome:
-          <input type="text" name="nome" value={formData.nome} onChange={handleChange} />
-        </label>
-        <br />
-        <label>
-          Sobrenome:
-          <input type="text" name="sobrenome" value={formData.sobrenome} onChange={handleChange} />
-        </label>
-        <br />
-        <label>
-          Email:
-          <input type="email" name="email" value={formData.email} onChange={handleChange} />
-        </label>
-        <br />
-        <label>
-          CPF:
-          <input type="text" name="cpf" value={formData.cpf} onChange={handleChange} />
-        </label>
-        <br />
-        <label>
-          Senha:
-          <input type="password" name="senha" value={formData.senha} onChange={handleChange} />
-        </label>
-        <br />
-        <label>
-          Empresa:
-          <input type="text" name="empresa" value={formData.empresa} onChange={handleChange} />
-        </label>
-        <br />
-        <label>
-          Telefone:
-          <input type="text" name="telefone" value={formData.telefone} onChange={handleChange} />
-        </label>
-        <br />
-        <button type="button" onClick={handleCadastro}>Fazer Cadastro</button>
-      </form>
-      {mensagem && <p>{mensagem}</p>}
-    </div>
+    <Container maxWidth="sm">
+      <Box mt={5}>
+        <Typography variant="h4" align="center" gutterBottom>
+          Cadastro
+        </Typography>
+        <form>
+          <Grid container spacing={2}>
+            <Grid item xs={12} sm={6}>
+              <TextField
+                label="Nome"
+                variant="outlined"
+                fullWidth
+                name="nome"
+                value={formData.nome}
+                onChange={handleChange}
+              />
+            </Grid>
+            <Grid item xs={12} sm={6}>
+              <TextField
+                label="Sobrenome"
+                variant="outlined"
+                fullWidth
+                name="sobrenome"
+                value={formData.sobrenome}
+                onChange={handleChange}
+              />
+            </Grid>
+            <Grid item xs={12}>
+              <TextField
+                label="Email"
+                variant="outlined"
+                fullWidth
+                type="email"
+                name="email"
+                value={formData.email}
+                onChange={handleChange}
+              />
+            </Grid>
+            <Grid item xs={12} sm={6}>
+              <TextField
+                label="CPF"
+                variant="outlined"
+                fullWidth
+                name="cpf"
+                value={formData.cpf}
+                onChange={handleChange}
+              />
+            </Grid>
+            <Grid item xs={12} sm={6}>
+              <TextField
+                label="Senha"
+                variant="outlined"
+                fullWidth
+                type="password"
+                name="senha"
+                value={formData.senha}
+                onChange={handleChange}
+              />
+            </Grid>
+            <Grid item xs={12}>
+              <TextField
+                label="Empresa"
+                variant="outlined"
+                fullWidth
+                name="empresa"
+                value={formData.empresa}
+                onChange={handleChange}
+              />
+            </Grid>
+            <Grid item xs={12}>
+              <TextField
+                label="Telefone"
+                variant="outlined"
+                fullWidth
+                name="telefone"
+                value={formData.telefone}
+                onChange={handleChange}
+              />
+            </Grid>
+          </Grid>
+          <Box mt={3} display="flex" justifyContent="center">
+            <Button variant="contained" color="primary" onClick={handleCadastro}>
+              Fazer Cadastro
+            </Button>
+          </Box>
+        </form>
+        {mensagem && (
+          <Typography variant="body1" color="success" align="center" mt={2}>
+            {mensagem}
+          </Typography>
+        )}
+      </Box>
+    </Container>
   );
 }
 
