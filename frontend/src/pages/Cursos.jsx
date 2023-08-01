@@ -20,8 +20,17 @@ function Cursos() {
   };
 
   const handleCadastro = () => {
+    // Obter o ID da pessoa logada do Local Storage
+    const idPessoaLogada = localStorage.getItem('id');
+
+    // Incluir o ID no corpo do formulário
+    const formDataComId = {
+      ...formData,
+      idPessoaLogada,
+    };
+
     axios
-      .post('http://localhost/projeto_curso/api/cadastroCurso.php', formData)
+      .post('http://localhost/projeto_curso/api/cadastroCurso.php', formDataComId)
       .then((result) => {
         console.log('Cadastro realizado com sucesso!', result.data);
         setMensagem(`Cadastro realizado com sucesso! Título: ${formData.titulo}`);

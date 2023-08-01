@@ -13,14 +13,16 @@ $response_json = file_get_contents("php://input");
 $dados = json_decode($response_json, true);
 
 if ($dados) {
+  $id_criador = $dados["idPessoaLogada"];
   $titulo = $dados["titulo"];
   $descricao = $dados["descricao"];
   $aula = $dados["aula"];
 
   // Aqui você pode realizar ações adicionais, como salvar no banco de dados, enviar e-mails, etc.
   try {
-    $stmt = $connect->prepare("INSERT INTO cursos (titulo, descricao, aula) VALUES (:titulo, :descricao, :aula)");
+    $stmt = $connect->prepare("INSERT INTO cursos (id_criador, titulo, descricao, aula) VALUES (:id_criador, :titulo, :descricao, :aula)");
 
+    $stmt->bindParam(':id_criador', $id_criador);
     $stmt->bindParam(':titulo', $titulo);
     $stmt->bindParam(':descricao', $descricao);
     $stmt->bindParam(':aula', $aula);
@@ -30,6 +32,7 @@ if ($dados) {
 
     $result["success"]["message"] = "Cadastrado com sucesso!";
     $result["data"]["id"] = $id;
+    $result["data"]["id_criador"] = $id_criador;
     $result["data"]["titulo"] = $titulo;
     $result["data"]["descricao"] = $descricao;
     $result["data"]["aula"] = $aula;

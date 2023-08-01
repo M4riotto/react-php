@@ -40,7 +40,7 @@ if ($data) {
                 'message' => 'Usuario Logado!',
                 'user' => [
                     'nome' => $result[0]['nome'],
-                    'sobrenome' => $result[0]['sobrenome']
+                    'id' => $result[0]['id'],
                 ]
             ];
             echo json_encode($response);

@@ -14,7 +14,7 @@ const CheckLogged = () => {
             console.log('not logged')
             navigate('/sign')
         }
-    }, [isLogged])
+    }, [isLogged, navigate])
 
     return(
         <Outlet />

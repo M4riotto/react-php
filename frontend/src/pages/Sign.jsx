@@ -29,11 +29,11 @@ const Sign = () => {
           const { token, user } = response.data;
           localStorage.setItem('token', token);
           localStorage.setItem('nome', user.nome);
-          localStorage.setItem('sobrenome', user.sobrenome);
+          localStorage.setItem('id', user.id);
 
           // Chame as funções do useAuthStore para armazenar as informações no estado global
           const { login } = useAuthStore.getState();
-          login(token, user.nome, user.sobrenome);
+          login(token, user.nome, user.sobrenome, user.id);
           
           navigate('/home');
         } else {

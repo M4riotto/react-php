@@ -1,14 +1,12 @@
 import Router from './Router'
-// import Initialization from './components/Initialization'
-// import useAuthStore from './store/authStore';
+import Initialization from './components/Initialization'
+import useAuthStore from './store/useAuthStore';
 
 function App() {
 
-  // const isLoading = useAuthStore((state) => state.isLoading)
+  const isLoading = useAuthStore((state) => state.isLoading)
 
-  // return isLoading ? <Initialization/> : <Router />
-  
-  return <Router />
+  return isLoading ? <Initialization/> : <Router /> 
 
 }
 
