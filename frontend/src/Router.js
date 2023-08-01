@@ -14,10 +14,10 @@ const Router = () => {
             <Route element={<CheckLogged />}>
 
                 <Route path="/home" element={<Home />} />
+                <Route path="/cursos" element={<Cursos />} />
 
             </Route>
 
-            <Route path="/cursos" element={<Cursos />} />
             <Route path="/signUp" element={<SignUp />} />
             <Route path="/Sign" element={<Sign />} />
         </Routes>

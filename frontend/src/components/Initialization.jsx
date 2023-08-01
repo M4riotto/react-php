@@ -9,9 +9,9 @@ const Initialization = () => {
 
   const loadingUserLogged = () => {
     const token = localStorage.getItem('token')
-    const userJSON = localStorage.getItem('user')
-    if (token && userJSON) {
-      const user = JSON.parse(userJSON)
+    const user = localStorage.getItem('nome')
+    if (token && user) {
+      // const user = JSON.parse(userJSON)
       console.log(token, user)
       login(token, user)
     }

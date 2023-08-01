@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { TextField, Button, Container, Typography, Box, Grid } from '@mui/material';
+import MiniDrawer from '../components/MiniDrawer';
 
 function Cursos() {
   const [formData, setFormData] = useState({
@@ -42,57 +43,61 @@ function Cursos() {
   };
 
   return (
-    <Container maxWidth="sm">
-      <Box mt={5}>
-        <Typography variant="h4" align="center" gutterBottom>
-          Cadastro de Aula
-        </Typography>
-        <form>
-          <Grid container spacing={2}>
-            <Grid item xs={12}>
-              <TextField
-                label="Título da Aula"
-                variant="outlined"
-                fullWidth
-                name="titulo"
-                value={formData.titulo}
-                onChange={handleChange}
-              />
-            </Grid>
-            <Grid item xs={12}>
-              <TextField
-                label="Descrição da Aula"
-                variant="outlined"
-                fullWidth
-                name="descricao"
-                value={formData.descricao}
-                onChange={handleChange}
-              />
-            </Grid>
-            <Grid item xs={12}>
-              <TextField
-                label="Aula"
-                variant="outlined"
-                fullWidth
-                name="aula"
-                value={formData.aula}
-                onChange={handleChange}
-              />
-            </Grid>
-          </Grid>
-          <Box mt={3} display="flex" justifyContent="center">
-            <Button variant="contained" color="primary" onClick={handleCadastro}>
-              Fazer Cadastro
-            </Button>
+    <>
+      <MiniDrawer>
+        <Container maxWidth="sm">
+          <Box mt={5}>
+            <Typography variant="h4" align="center" gutterBottom>
+              Cadastro de Aula
+            </Typography>
+            <form>
+              <Grid container spacing={2}>
+                <Grid item xs={12}>
+                  <TextField
+                    label="Título da Aula"
+                    variant="outlined"
+                    fullWidth
+                    name="titulo"
+                    value={formData.titulo}
+                    onChange={handleChange}
+                  />
+                </Grid>
+                <Grid item xs={12}>
+                  <TextField
+                    label="Descrição da Aula"
+                    variant="outlined"
+                    fullWidth
+                    name="descricao"
+                    value={formData.descricao}
+                    onChange={handleChange}
+                  />
+                </Grid>
+                <Grid item xs={12}>
+                  <TextField
+                    label="Aula"
+                    variant="outlined"
+                    fullWidth
+                    name="aula"
+                    value={formData.aula}
+                    onChange={handleChange}
+                  />
+                </Grid>
+              </Grid>
+              <Box mt={3} display="flex" justifyContent="center">
+                <Button variant="contained" color="primary" onClick={handleCadastro}>
+                  Fazer Cadastro
+                </Button>
+              </Box>
+            </form>
+            {mensagem && (
+              <Typography variant="body1" color="success" align="center" mt={2}>
+                {mensagem}
+              </Typography>
+            )}
           </Box>
-        </form>
-        {mensagem && (
-          <Typography variant="body1" color="success" align="center" mt={2}>
-            {mensagem}
-          </Typography>
-        )}
-      </Box>
-    </Container>
+        </Container>
+      </MiniDrawer>
+    </>
   );
 }
 
