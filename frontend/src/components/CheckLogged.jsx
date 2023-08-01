@@ -6,8 +6,6 @@ const CheckLogged = () => {
 
     const isLogged = useAuthStore((state) => state.isLogged)
     const navigate = useNavigate()
-
-    // console.log('check-logged')
     
     useEffect(() => {
 

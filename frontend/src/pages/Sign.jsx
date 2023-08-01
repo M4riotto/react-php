@@ -3,12 +3,11 @@ import axios from 'axios';
 import { TextField, Button, Container, Typography, Box, Grid } from '@mui/material';
 
 import useAuthStore from '../store/useAuthStore';
-
-import Logout from '../components/Logout'
+import Logout from '../components/Logout';
 import { useNavigate } from 'react-router-dom';
 
 const Sign = () => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     cpf: '',
     senha: '',
@@ -22,24 +21,25 @@ const Sign = () => {
     }));
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const handleLogin = () => {
     axios
       .post('http://localhost/projeto_curso/api/login.php', formData)
       .then((response) => {
         if (response.data.message === 'Usuario Logado!') {
           const { token, user } = response.data;
           localStorage.setItem('token', token);
-          localStorage.setItem('user', JSON.stringify(user));
+          localStorage.setItem('nome', user.nome);
+          localStorage.setItem('sobrenome', user.sobrenome);
+
+          // Chame as funções do useAuthStore para armazenar as informações no estado global
+          const { login } = useAuthStore.getState();
+          login(token, user.nome, user.sobrenome);
           
-          // Chame a função login do useAuthStore para armazenar as informações no estado global
-          useAuthStore.login(token, user.nome, user.sobrenome);
-          navigate('/home')
-          
+          navigate('/home');
         } else {
           console.error('Login ou senha inválidos.');
         }
-  
+
         console.log(`Resposta do servidor:`, response.data);
       })
       .catch((error) => {
@@ -53,7 +53,10 @@ const Sign = () => {
         <Typography variant="h4" align="center" gutterBottom>
           Login
         </Typography>
-        <form onSubmit={(e) => handleSubmit(e)}>
+        <form onSubmit={(e) => {
+          e.preventDefault();
+          handleLogin();
+        }}>
           <Grid container spacing={2}>
             <Grid item xs={12}>
               <TextField
