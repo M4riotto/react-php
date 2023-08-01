@@ -2,9 +2,13 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { TextField, Button, Container, Typography, Box, Grid } from '@mui/material';
 
+import useAuthStore from '../store/useAuthStore';
+
 import Logout from '../components/Logout'
+import { useNavigate } from 'react-router-dom';
 
 const Sign = () => {
+  const navigate = useNavigate()
   const [formData, setFormData] = useState({
     cpf: '',
     senha: '',
@@ -27,12 +31,15 @@ const Sign = () => {
           const { token, user } = response.data;
           localStorage.setItem('token', token);
           localStorage.setItem('user', JSON.stringify(user));
-          // Redireciona para outra página, se necessário
-          // window.location.href = 'URL_DA_PAGINA_DE_DESTINO';
+          
+          // Chame a função login do useAuthStore para armazenar as informações no estado global
+          useAuthStore.login(token, user.nome, user.sobrenome);
+          navigate('/home')
+          
         } else {
           console.error('Login ou senha inválidos.');
         }
-
+  
         console.log(`Resposta do servidor:`, response.data);
       })
       .catch((error) => {
