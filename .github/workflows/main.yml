@@ -31,4 +31,4 @@ jobs:
         password: ${{ secrets.FTP_PASSWORD }}  # aqui você coloca a senha ewoifhoewhfew
         local-dir: ./api/  # Define o diretório "api" como diretório de trabalho e adiciona a barra final
         exclude: ./api/frontend/  # Excluir a pasta "frontend" durante a implantação
-        security: false  # Define como "false" para evitar erros de conexão
+        security: loose  # Define como "loose" para evitar erros de conexão
