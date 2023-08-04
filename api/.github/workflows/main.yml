@@ -30,7 +30,7 @@ jobs:
         local-dir: .api  # Diretório do seu projeto a ser enviado para o servidor
         remote-dir: /public_html/api  # Diretório no servidor onde a API será implantada
 
-
+ 
 
 # on: 
 #   push: 
