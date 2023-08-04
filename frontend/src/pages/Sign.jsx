@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { TextField, Button, Container, Typography, Box, Grid } from '@mui/material';
 
+import { API_SERVER } from '../config'
+
 import useAuthStore from '../store/useAuthStore';
 import Logout from '../components/Logout';
 import { useNavigate } from 'react-router-dom';
@@ -23,7 +25,7 @@ const Sign = () => {
 
   const handleLogin = () => {
     axios
-      .post('http://localhost/projeto_curso/api/login.php', formData)
+      .post(`${API_SERVER}/login.php`, formData)
       .then((response) => {
         if (response.data.message === 'Usuario Logado!') {
           const { token, user } = response.data;
