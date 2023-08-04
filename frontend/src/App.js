@@ -1,16 +1,12 @@
-// import Router from './Router'
-// import Initialization from './components/Initialization'
-// import useAuthStore from './store/useAuthStore';
+import Router from './Router'
+import Initialization from './components/Initialization'
+import useAuthStore from './store/useAuthStore';
 
 function App() {
 
- 
+  const isLoading = useAuthStore((state) => state.isLoading)
 
-  return (
-    <>
-    <h1>testabdi</h1>
-    </>
-  )
+  return isLoading ? <Initialization/> : <Router />
 
 }
 
