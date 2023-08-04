@@ -3,7 +3,7 @@ name: Deploy to Hostinger
 on:
   push:
     branches:
-      - main  # ou o nome da sua branch principal
+      - main
 
 jobs:
   deploy:
@@ -13,22 +13,20 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v2
 
-    - name: Set up PHP
+    - name: Set up PHP 8.0
       uses: shivammathur/setup-php@v2
       with:
-        php-version: '7.4' 
-        composer: true # Substitua pela versão  de PHP utilizada na sua API
+        php-version: '8.0'  # Atualiza para a versão de PHP 8.0
 
     - name: Install dependencies
-      run: composer install
-      working-directory: ./api  # Se você estiver usando o Composer para gerenciar as dependências
+      run: composer install  # Se você estiver usando o Composer para gerenciar as dependências
 
     - name: Deploy to Hostinger
       uses: SamKirkland/FTP-Deploy-Action@4.1.0
       with:
-        server: ${{ secrets.FTP_HOST }}  # aqui eu coloquei undertakehigh.com.br
-        username: ${{ secrets.FTP_USER }}  # aqui eu coloquei u4551847364
-        password: ${{ secrets.FTP_PASSWORD }}  # aqui coloquei a senha ewoifhoewhfew
+        server: ${{ secrets.FTP_HOST }}  # aqui você coloca undertakehigh.com.br
+        username: ${{ secrets.FTP_USER }}  # aqui você coloca u4551847364
+        password: ${{ secrets.FTP_PASSWORD }}  # aqui você coloca a senha ewoifhoewhfew
         local-dir: ./api  # Diretório do seu projeto a ser enviado para o servidor
         remote-dir: /public_html/api  # Diretório no servidor onde a API será implantada
-        exclude: ./frontend  # Excluir a pasta "frontend" durante a implantação 
+        exclude: ./frontend  # Excluir a pasta "frontend" durante a implantação
