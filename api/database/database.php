@@ -2,7 +2,7 @@
 $servername = 'mysql.hostinger.com.br';
 $username = 'u455152201_teste';
 $password = '0zSl$r4[;H';
-$database = 'plataforma';
+$database = 'u455152201_teste';
 // $servername = 'mysql.hostinger.com.br';
 
 try {
