@@ -1,7 +1,7 @@
 <?php
-$servername = 'localhost';
-$username = 'root';
-$password = '';
+$servername = 'mysql.hostinger.com.br';
+$username = 'u455152201_teste';
+$password = '0zSl$r4[;H';
 $database = 'plataforma';
 // $servername = 'mysql.hostinger.com.br';
 
