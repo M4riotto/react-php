@@ -89,7 +89,7 @@ const Sign = () => {
             </Button>
             <Logout />
             <Button variant="contained" color="primary" onClick={() => navigate('/cadastro')}>
-              
+              Cadastro
             </Button>
           </Box>
         </form>
