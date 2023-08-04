@@ -24,7 +24,7 @@ const Router = () => {
                 <Route path="/signUp" element={<SignUp />} />
                 <Route path="/Sign" element={<Sign />} />
                 
-            {console.log('amigo estou aquii')}
+            {console.log('amigo estou aquii2')}
             </Routes>
         </>
     )
