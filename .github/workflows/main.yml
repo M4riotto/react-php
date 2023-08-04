@@ -29,4 +29,4 @@ jobs:
         password: ${{ secrets.FTP_PASSWORD }}  # aqui coloquei a senha ewoifhoewhfew
         local-dir: ./api  # Diretório do seu projeto a ser enviado para o servidor
         remote-dir: /public_html/api  # Diretório no servidor onde a API será implantada
-        exclude: ../../../frontend  # Excluir a pasta "frontend" durante a implantação 
+        exclude: ./frontend  # Excluir a pasta "frontend" durante a implantação 
