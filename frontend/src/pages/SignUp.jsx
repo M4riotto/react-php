@@ -2,6 +2,9 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { TextField, Button, Container, Typography, Box, Grid } from '@mui/material';
 
+
+import { API_SERVER } from '../config'
+
 function SignUp() {
   const [formData, setFormData] = useState({
     nome: '',
@@ -25,7 +28,7 @@ function SignUp() {
 
   const handleCadastro = () => {
     axios
-      .post('http://localhost/projeto_curso/api/cadastro.php', formData)
+      .post(`${API_SERVER}/cadastro.php`, formData)
       .then((result) => {
         console.log('Cadastro realizado com sucesso!', result.data);
         setMensagem(`Cadastro realizado com sucesso! ${formData.nome}`);

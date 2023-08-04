@@ -88,6 +88,9 @@ const Sign = () => {
               Enviar
             </Button>
             <Logout />
+            <Button variant="contained" color="primary" onClick={() => navigate('/cadastro')}>
+              
+            </Button>
           </Box>
         </form>
       </Box>

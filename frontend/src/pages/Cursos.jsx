@@ -3,6 +3,9 @@ import axios from 'axios';
 import { TextField, Button, Container, Typography, Box, Grid } from '@mui/material';
 import MiniDrawer from '../components/MiniDrawer';
 
+
+import { API_SERVER } from '../config'
+
 function Cursos() {
   const [formData, setFormData] = useState({
     titulo: '',
@@ -31,7 +34,7 @@ function Cursos() {
     };
 
     axios
-      .post('http://localhost/projeto_curso/api/cadastroCurso.php', formDataComId)
+      .post(`${API_SERVER}/cadastroCurso.php`, formDataComId)
       .then((result) => {
         console.log('Cadastro realizado com sucesso!', result.data);
         setMensagem(`Cadastro realizado com sucesso! Título: ${formData.titulo}`);
