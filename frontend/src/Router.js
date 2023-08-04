@@ -9,18 +9,23 @@ import CheckLogged from "./components/CheckLogged";
 
 const Router = () => {
     return (
-        <Routes>
+        <>
+            {console.log('amigo estou aquii')}
+            <Routes>
 
-            <Route element={<CheckLogged />}>
 
-                <Route path="/home" element={<Home />} />
-                <Route path="/cursos" element={<Cursos />} />
 
-            </Route>
+                <Route element={<CheckLogged />}>
 
-            <Route path="/signUp" element={<SignUp />} />
-            <Route path="/Sign" element={<Sign />} />
-        </Routes>
+                    <Route path="/home" element={<Home />} />
+                    <Route path="/cursos" element={<Cursos />} />
+
+                </Route>
+
+                <Route path="/signUp" element={<SignUp />} />
+                <Route path="/Sign" element={<Sign />} />
+            </Routes>
+        </>
     )
 }
 
