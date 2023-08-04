@@ -1,4 +1,4 @@
-import Router from './Router'
+// import Router from './Router'
 // import Initialization from './components/Initialization'
 // import useAuthStore from './store/useAuthStore';
 
@@ -6,7 +6,11 @@ function App() {
 
  
 
-  return <Router />
+  return (
+    <>
+    <h1>testabdi</h1>
+    </>
+  )
 
 }
 
