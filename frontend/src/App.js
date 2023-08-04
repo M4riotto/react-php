@@ -6,7 +6,7 @@ function App() {
 
   const isLoading = useAuthStore((state) => state.isLoading)
 
-  return isLoading ? <Initialization/> : <Router /> <h1>oi</h1>
+  return isLoading ? <Initialization/> : <Router />
 
 }
 
