@@ -13,13 +13,15 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v2
 
-    - name: Set up PHP 8.0
+    - name: Set up PHP
       uses: shivammathur/setup-php@v2
       with:
         php-version: '8.0'  # Atualiza para a versão de PHP 8.0
 
     - name: Install dependencies
-      run: composer install  # Se você estiver usando o Composer para gerenciar as dependências
+      run: |
+        cd api  # Define o diretório "api" como diretório de trabalho
+        composer install  # Executa o comando "composer install"
 
     - name: Deploy to Hostinger
       uses: SamKirkland/FTP-Deploy-Action@4.1.0
