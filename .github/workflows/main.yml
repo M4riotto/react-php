@@ -16,7 +16,7 @@ jobs:
     - name: Set up PHP
       uses: shivammathur/setup-php@v2
       with:
-        php-version: '7.4'  # Substitua pela versão de PHP utilizada na sua API
+        php-version: '7.4'  # Substitua pela versão  de PHP utilizada na sua API
 
     - name: Install dependencies
       run: composer install  # Se você estiver usando o Composer para gerenciar as dependências
