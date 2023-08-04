@@ -24,9 +24,9 @@ jobs:
     - name: Deploy to Hostinger
       uses: SamKirkland/FTP-Deploy-Action@4.1.0
       with:
-        server: ${{ secrets.FTP_HOST }}  # Nome de usuário e endereço do servidor (host) da Hostinger
-        username: ${{ secrets.FTP_USER }}  # Nome de usuário FTP/SFTP da Hostinger
-        password: ${{ secrets.FTP_PASSWORD }}  # Senha FTP/SFTP da Hostinger
+        server: ${{ secrets.FTP_HOST }}  # aqui eu coloquei ftp://undertakehigh.com.br
+        username: ${{ secrets.FTP_USER }}  # aqui eu coloquei u4551847364
+        password: ${{ secrets.FTP_PASSWORD }}  # aqui coloquei a senha ewoifhoewhfew
         local-dir: .api  # Diretório do seu projeto a ser enviado para o servidor
         remote-dir: /public_html/api  # Diretório no servidor onde a API será implantada
 
