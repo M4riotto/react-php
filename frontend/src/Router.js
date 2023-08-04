@@ -21,8 +21,8 @@ const Router = () => {
 
                 </Route>
 
-                <Route path="/signUp" element={<SignUp />} />
-                <Route path="/Sign" element={<Sign />} />
+                <Route path="/" element={<Sign />} />
+                <Route path="/cadastro" element={<SignUp />} />
                 
             {console.log('amigo estou aquii2')}
             </Routes>
