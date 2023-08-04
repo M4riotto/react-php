@@ -32,7 +32,7 @@ if ($dados){
     $stmt->bindParam(':cpf', $cpf);
     $stmt->bindParam(':empresa', $empresa);
     $stmt->bindParam(':telefone', $telefone);
-    $stmt->bindParam(':senha_usuario', $senhaHash);
+    $stmt->bindParam(':senha_usuario', $senhaHash); 
 
     $stmt->execute();
     // echo "Cadastro com sucesso!";
