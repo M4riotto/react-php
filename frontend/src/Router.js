@@ -10,7 +10,6 @@ import CheckLogged from "./components/CheckLogged";
 const Router = () => {
     return (
         <>
-            {console.log('amigo estou aquii')}
             <Routes>
 
 
@@ -24,6 +23,8 @@ const Router = () => {
 
                 <Route path="/signUp" element={<SignUp />} />
                 <Route path="/Sign" element={<Sign />} />
+                
+            {console.log('amigo estou aquii')}
             </Routes>
         </>
     )
