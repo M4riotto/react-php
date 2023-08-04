@@ -16,13 +16,14 @@ const Router = () => {
 
                 <Route element={<CheckLogged />}>
 
-                    <Route path="/home" element={<Home />} />
-                    <Route path="/cursos" element={<Cursos />} />
+                    <Route path="home" element={<Home />} />
+                    <Route path="cursos" element={<Cursos />} />
 
                 </Route>
 
                 <Route path="/" element={<Sign />} />
-                <Route path="/cadastro" element={<SignUp />} />
+                <Route path="cadastro" element={<SignUp />} />
+                <Route path="sign" element={<Sign />} />
                 
             {console.log('amigo estou aquii2')}
             </Routes>
