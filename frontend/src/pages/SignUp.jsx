@@ -30,7 +30,6 @@ function SignUp() {
     axios
       .post(`${API_SERVER}/cadastro.php`, formData)
       .then((result) => {
-        console.log('Cadastro realizado com sucesso!', result.data);
         setMensagem(`Cadastro realizado com sucesso! ${formData.nome}`);
       })
       .catch((error) => {

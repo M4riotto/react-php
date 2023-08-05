@@ -40,10 +40,8 @@ const Sign = () => {
           
           navigate('/home');
         } else {
-          console.error('Login ou senha inválidos.');
+          alert('Login ou senha inválidos.')
         }
-
-        console.log(`Resposta do servidor:`, response.data);
       })
       .catch((error) => {
         console.error('Erro ao realizar o login:', error);

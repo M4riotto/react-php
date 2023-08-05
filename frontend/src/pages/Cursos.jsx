@@ -36,7 +36,6 @@ function Cursos() {
     axios
       .post(`${API_SERVER}/cadastroCurso.php`, formDataComId)
       .then((result) => {
-        console.log('Cadastro realizado com sucesso!', result.data);
         setMensagem(`Cadastro realizado com sucesso! Título: ${formData.titulo}`);
       })
       .catch((error) => {

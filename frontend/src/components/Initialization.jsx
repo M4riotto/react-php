@@ -21,7 +21,6 @@ const Initialization = () => {
   }
 
   useEffect(() => {
-    console.log('inicializati')
     loadingUserLogged();
   })
 

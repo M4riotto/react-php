@@ -13,7 +13,6 @@ const Cards = () => {
     axios
       .post(`${API_SERVER}/selectCurso.php`)
       .then((response) => {
-        console.log('Resposta da API:', response.data);
         setEventos(response.data.data);
       })
       .catch((error) => {

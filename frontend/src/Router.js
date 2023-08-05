@@ -27,7 +27,6 @@ const Router = () => {
                 <Route path="cadastro" element={<SignUp />} />
                 <Route path="sign" element={<Sign />} />
                 
-            {console.log('amigo estou aquii2')}
             </Routes>
         </>
     )
