@@ -11,7 +11,7 @@ import { API_SERVER } from '../config'
 const Cards = () => {
     // const navigate = useNavigate();
 
-    const [eventos, setEventos] = useState(false);
+    const [eventos, setEventos] = useState([]);
 
     const LoadCard = () => {
         axios
