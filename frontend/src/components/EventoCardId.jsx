@@ -38,9 +38,11 @@ const EventoCardId = ({ evento }) => {
         </CardContent>
       </Card>
     );
+  }else if(eventos.titulo === null ){
+    return <h1>Nnenhum evento cadastrado</h1>
   } else {
     // Se os IDs não forem compatíveis, retornar null (não exibir o evento)
-    return <h1>Voce nao tem evento cadastrado</h1>;
+    return null;
   }
 };
 
