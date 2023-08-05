@@ -5,6 +5,7 @@ import SignUp from "./pages/SignUp";
 import Sign from "./pages/Sign";
 import Home from "./pages/Home";
 import CheckLogged from "./components/CheckLogged";
+import Cards from "./pages/Cards";
 
 
 const Router = () => {
@@ -18,6 +19,7 @@ const Router = () => {
 
                     <Route path="home" element={<Home />} />
                     <Route path="cursos" element={<Cursos />} />
+                    <Route path="card" element={<Cards />} />
 
                 </Route>
 

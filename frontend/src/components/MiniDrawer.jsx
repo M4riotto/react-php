@@ -150,6 +150,7 @@ const MiniDrawer = ({ children }) => {
 
                         { text: 'Início', link: '/home' },
                         { text: 'cursos', link: '/cursos' },
+                        { text: 'card', link: '/card' },
                         // { text: 'Clientes', link: '/clientes' },
                         // { text: 'Funcionarios', link: '/funcionarios' },
                         // { text: 'Vendas', link: '/vendas' },
