@@ -18,7 +18,7 @@ const Cards = () => {
           .post(`${API_SERVER}/selectCurso.php`)
           .then((result) => {
             console.log('Cadastro realizado com sucesso!', result.data);
-            setEventos(result)
+            setEventos(result.data); // Ajuste para atribuir result.data ao estado 'eventos'
           })
           .catch((error) => {
             console.error('Erro ao realizar o cadastro:', error);
