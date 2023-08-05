@@ -22,7 +22,7 @@ const Cards = () => {
   };
   const apagar = () => {
     axios
-      .post(`${API_SERVER}/apagar.php.php`)
+      .post(`${API_SERVER}/apagar.php`)
       .then((response) => {
         console.log('Resposta da API:', response.data);
       })
