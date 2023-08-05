@@ -16,14 +16,15 @@ const Cards = () => {
     const LoadCard = () => {
         axios
           .post(`${API_SERVER}/selectCurso.php`)
-          .then((result) => {
-            console.log('Cadastro realizado com sucesso!', result.data);
-            setEventos(result.data); // Ajuste para atribuir result.data ao estado 'eventos'
+          .then((response) => {
+            console.log('Resposta da API:', response.data);
+            setEventos(response.data); // Ajuste para atribuir response.data ao estado 'eventos'
           })
           .catch((error) => {
-            console.error('Erro ao realizar o cadastro:', error);
+            console.error('Erro ao buscar dados da API:', error);
           });
       };
+      
 
       useEffect(() => {
         LoadCard()
