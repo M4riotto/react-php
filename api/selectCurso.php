@@ -4,7 +4,7 @@
     require ('./database/database.php');
 
     try {
-        $stmt = $connect->prepare("SELECT * FROM cursos INNER JOIN criadores ON cursos.id_criador = criadorers.id;");
+        $stmt = $connect->prepare("SELECT * FROM cursos INNER JOIN criadores ON cursos.id_criador = criadores.id;");
 
         $stmt->execute();
 
