@@ -9,35 +9,37 @@ import { API_SERVER } from '../config'
 // import { useNavigate } from 'react-router-dom';
 
 const Cards = () => {
-    // const navigate = useNavigate();
-
     const [eventos, setEventos] = useState([]);
-
+    const [loading, setLoading] = useState(true);
+  
     const LoadCard = () => {
-        axios
-          .post(`${API_SERVER}/selectCurso.php`)
-          .then((response) => {
-            console.log('Resposta da API:', response.data);
-            setEventos(response.data); // Ajuste para atribuir response.data ao estado 'eventos'
-          })
-          .catch((error) => {
-            console.error('Erro ao buscar dados da API:', error);
-          });
-      };
-      
-
-      useEffect(() => {
-        LoadCard()
-    }, []) // [] = executa apenas uma vez quando o componente é montados
-    
+      axios
+        .post(`${API_SERVER}/selectCurso.php`)
+        .then((response) => {
+          console.log('Resposta da API:', response.data);
+          setEventos(response.data);
+          setLoading(false); // Define o estado 'loading' para falso após a resposta da API
+        })
+        .catch((error) => {
+          console.error('Erro ao buscar dados da API:', error);
+          setLoading(false); // Define o estado 'loading' para falso mesmo em caso de erro
+        });
+    };
+  
+    useEffect(() => {
+      LoadCard();
+    }, []);
+  
     return (
-        <>
-            {eventos.map((evento) => (
-                <h1 key={evento.id}>{evento.titulo}</h1>
-            ))}
-        </>
+      <>
+        {loading ? (
+          <p>Carregando...</p>
+        ) : (
+          eventos.map((evento) => <h1 key={evento.id}>{evento.titulo}</h1>)
+        )}
+      </>
     );
-    
-};
-
-export default Cards;
+  };
+  
+  export default Cards;
+  
