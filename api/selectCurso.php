@@ -4,7 +4,8 @@
     require ('./database/database.php');
 
     try {
-        $stmt = $connect->prepare("SELECT * FROM cursos");
+        $stmt = $connect->prepare("SELECT * FROM cursos INNER JOIN criador ON cursos.id_criador = criadorers.id;");
+        
         $stmt->execute();
 
         $eventos = $stmt->fetchAll(PDO::FETCH_ASSOC);

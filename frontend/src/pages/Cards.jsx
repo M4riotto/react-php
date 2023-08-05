@@ -33,7 +33,13 @@ const Cards = () => {
   return (
     <>
       {eventos.map((evento) => (
-        <h1 key={evento.id}>{evento.titulo}</h1>
+        <div key={eventos.id}>
+
+          <h1>{evento.titulo}</h1>
+          <h2>{evento.descricão}</h2>
+          <h2>{evento.nome}</h2>
+
+        </div>
       ))}
     </>
 
