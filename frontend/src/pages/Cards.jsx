@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
 import EventoCard from '../components/EventoCard';
+import MiniDrawer from '../components/MiniDrawer';
 
 import { API_SERVER } from '../config';
 
@@ -26,9 +27,13 @@ const Cards = () => {
 
   return (
     <>
-      {eventos.map((evento) => (
-        <EventoCard key={evento.id} evento={evento} />
-      ))}
+      <MiniDrawer >
+
+        {eventos.map((evento) => (
+          <EventoCard key={evento.id} evento={evento} />
+        ))}
+
+      </MiniDrawer >
     </>
   );
 };
