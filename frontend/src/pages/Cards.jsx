@@ -20,9 +20,20 @@ const Cards = () => {
         console.error('Erro ao buscar dados da API:', error);
       });
   };
+  const apagar = () => {
+    axios
+      .post(`${API_SERVER}/apagar.php.php`)
+      .then((response) => {
+        console.log('Resposta da API:', response.data);
+      })
+      .catch((error) => {
+        console.error('Erro ao buscar dados da API:', error);
+      });
+  };
 
   useEffect(() => {
     LoadCard();
+    apagar()
   }, []);
 
   return (
